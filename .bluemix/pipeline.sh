@@ -375,6 +375,8 @@ if [ ! -f adminCard.card ]; then
     composer card create -f adminCard.card -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
 fi
 
+composer card list
+
 composer card import -f adminCard.card -n admin@blockchain-network
 date
 printf "\n ---- Created admin card ----- \n "
