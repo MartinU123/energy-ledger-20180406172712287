@@ -375,9 +375,11 @@ if [ ! -f adminCard.card ]; then
     composer card create -f adminCard.card -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
 fi
 
-composer card list
+if ! echo "$(composer card list)" | grep -q "admin@blockchain-network"; then
+    printf "\nCard does not yet exist in the card manager... so import it:\n"
+    composer card import -f adminCard.card -n admin@blockchain-network
+fi
 
-composer card import -f adminCard.card -n admin@blockchain-network
 date
 printf "\n ---- Created admin card ----- \n "
 
