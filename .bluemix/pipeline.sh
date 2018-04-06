@@ -224,7 +224,11 @@ export CLOUDANT_CREDS=$(jq ". + {database: \"${CF_APP}\"}" ./config/cloudant-cre
 
 printf "\n ${CLOUDANT_CREDS} \n"
 
+
 get_connection_profile
+
+cat ./config/connection_profile.json
+
 while ! jq -e ".channels.defaultchannel" ./config/connection-profile.json
 do
 sleep 10
