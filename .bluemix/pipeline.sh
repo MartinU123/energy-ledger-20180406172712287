@@ -227,9 +227,6 @@ printf "\n ${CLOUDANT_CREDS} \n"
 
 get_connection_profile
 
-printf "\n --- connection-profile.json --- \n"
-cat ./config/connection-profile.json
-
 while ! jq -e ".channels.defaultchannel" ./config/connection-profile.json
 do
 sleep 10
