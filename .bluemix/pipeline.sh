@@ -374,7 +374,9 @@ printf "\n ----- created ca card ----- \n"
 ## -----------------------------------------------------------
 date
 printf "\n ---- Create admin card ----- \n "
-composer card create -f adminCard.card -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+if [ ! -f adminCard.card ]; then
+    composer card create -f adminCard.card -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+fi
 
 composer card import -f adminCard.card -n admin@blockchain-network
 date
